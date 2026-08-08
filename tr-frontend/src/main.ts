@@ -32,7 +32,9 @@ if(appContainer){
     (task) => generateTaskCardHtml(task),
   ).join('');
   appContainer.innerHTML =`
-    <h1>Talento Ready</h1>
+    <header>
+      <h1>Talento Ready</h1>
+    </header>
     <main id="contenedor-tareas">
       ${taskGridHtml}
     </main>
