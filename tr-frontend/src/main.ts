@@ -1,3 +1,4 @@
+import { generateTaskCardHtml } from "./components/TaskCard";
 import { type Task,TaskStatus } from "./models/task";
 
 const appContainer = document.getElementById('app');
@@ -26,16 +27,14 @@ const taskList: Task[] = [
   },
 ];
 
-const taskContainer = document.createElement("ul");
-taskContainer.innerHTML = taskList.reduce((acc, task)=>{
-  return (
-    acc + `<li>${task.title} - ${task.status}</li>`
-  );
-},'');
-
 if(appContainer){
+  const taskGridHtml = taskList.map(
+    (task) => generateTaskCardHtml(task),
+  ).join('');
   appContainer.innerHTML =`
     <h1>Talento Ready</h1>
+    <main id="contenedor-tareas">
+      ${taskGridHtml}
+    </main>
   `;
-  appContainer.appendChild(taskContainer);
 }
